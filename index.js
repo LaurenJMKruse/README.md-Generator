@@ -4,7 +4,7 @@ const inquirer = require('inquirer');
 const path = require('path');
 const generateMarkdown = require('./generateMarkdown');
 const contactMethods = ['Email', 'GitHub', 'Slack'];
-const licenseTypes = ['Academic Free License v3.0', 'Apache License 2.0', 'Creative Commons License Family', 'Eclipse Public License 2.0', 'GNU General Public License v3.0', 'MIT', 'Mozilla Public License 2.0', 'Unilicense, The'];
+const licenseTypes = ['Academic Free License v3.0', 'Apache License 2.0', 'Creative Commons License Family', 'Eclipse Public License 2.0', 'GNU General Public License v3.0', 'MIT', 'Mozilla Public License 2.0', 'The Unilicense', 'None'];
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -33,11 +33,16 @@ const questions = [
         type: 'checkbox',
         message: 'What is your preferred contact method?',
         choices: contactMethods,
-    }
+    },
     {
         name: 'projectTitle',
         type: 'input',
         message: 'What is the name of your project?'
+    },
+    {
+        name: 'userStory',
+        type: 'input',
+        message: 'What user story is the driver of this application?'
     },
     {
         name: 'projectDescription',
@@ -65,8 +70,14 @@ const questions = [
         message: `Provide credits for others' graphics, data, etc., utilized in the creation of your project.`
     },
     {
+        name: 'references',
+        type: 'input',
+        message: 'List the names of individuals and/or entities (MDN Docs, W3, etc.) you relied upon for guidance in the creation of your application.'
+    },
+    {
         name: 'license',
         type: 'list',
+        message: 'Please indicate the type of license for your project.',
         choices: licenseTypes
     },
     {
