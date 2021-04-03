@@ -1,12 +1,18 @@
-// TODO: Include packages needed for this application
+// A. Variables
+// ********************************************
+// 01. To import required packages
 const fs = require('fs');
 const inquirer = require('inquirer');
 const path = require('path');
 const generateMarkdown = require('./generateMarkdown');
+
+// 02. To hold options when gathering user input
 const contactMethods = ['Email', 'GitHub', 'Slack'];
 const licenseTypes = ['Academic Free License v3.0', 'Apache License 2.0', 'Creative Commons License Family', 'Eclipse Public License 2.0', 'GNU General Public License v3.0', 'MIT', 'Mozilla Public License 2.0', 'The Unilicense', 'None'];
 
-// TODO: Create an array of questions for user input
+// B. Array
+// ********************************************
+// Contains questions to gather user input
 const questions = [
     {
         name: 'name',
@@ -16,7 +22,7 @@ const questions = [
     {
         name: 'gitHubName',
         type: 'input',
-        message: 'What is your GitHub username?'
+        message: 'Please state your GitHub username.'
     },
     {
         name: 'emailAddress',
@@ -26,7 +32,7 @@ const questions = [
     {
         name: 'slackName',
         type: 'input',
-        message: 'What is Slack display name?'
+        message: 'What is your Slack display name?'
     },
     {
         name: 'contactMethod',
@@ -100,15 +106,12 @@ const questions = [
         name: 'contributions',
         type: 'input',
         message: 'How can developers contribute to your project?'
-    },
-    {
-        name: 'feedback',
-        type: 'input',
-        message: 'What avenues are available, should users have questions or comments about your project?'
     }    
 ];
 
-// TODO: Create a function to write README file
+// C. Functions
+// ********************************************
+// 01. Creation of README.md file
 function writeToFile(fileName, data) {
     let currentWorkingDirectory = process.cwd();
     console.log(`The current working directory is: ${currentWorkingDirectory}`);
@@ -119,7 +122,7 @@ function writeToFile(fileName, data) {
     return sourceFiles;
 };
 
-// TODO: Create a function to initialize app
+// 02. Initialization of application
 function init() {
     inquirer.prompt(questions).then((userAnswers) => {
         writeToFile('README.md', generateMarkdown({...userAnswers}));
@@ -127,6 +130,7 @@ function init() {
     });
 };
 
-// Function call to initialize app
+// D. Main Process
+// ********************************************
+// Function call to initialize application
 init();
-
