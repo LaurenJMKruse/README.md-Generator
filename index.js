@@ -8,7 +8,7 @@ const generateMarkdown = require('./generateMarkdown');
 
 // 02. To hold options when gathering user input
 const contactMethods = ['Email', 'GitHub', 'Slack'];
-const licenseTypes = ['Academic Free License v3.0', 'Apache License 2.0', 'Creative Commons License Family', 'Eclipse Public License 2.0', 'GNU General Public License v3.0', 'MIT', 'Mozilla Public License 2.0', 'The Unilicense', 'None'];
+const licenseTypes = ['Academic Free License v3.0', 'Apache License 2.0', 'Creative Commons Zero v1.0 Universal', 'Eclipse Public License 2.0', 'GNU General Public License v3.0', 'MIT License', 'Mozilla Public License 2.0', 'The Unilicense', 'None'];
 
 // B. Array
 // ********************************************
@@ -106,7 +106,12 @@ const questions = [
         name: 'contributions',
         type: 'input',
         message: 'How can developers contribute to your project?'
-    }    
+    },
+    {
+        name: 'feedback',
+        type: 'input',
+        message: 'Enter any notes regarding comments, questions, and other feedback.'
+    }
 ];
 
 // C. Functions
@@ -118,7 +123,6 @@ function writeToFile(fileName, data) {
     let generateMarkdown = fileName;
     let userInput = data;
     let sourceFiles = fs.writeFileSync(path.join(currentWorkingDirectory, generateMarkdown), userInput);
-    console.log(`sourceFiles is: ${sourceFiles}`);
     return sourceFiles;
 };
 

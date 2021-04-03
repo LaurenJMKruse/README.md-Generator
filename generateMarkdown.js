@@ -63,43 +63,43 @@ function renderLicenseInfoLink(license) {
   if (license === 'None') {
     return 'Not Applicable';
   } else {
-    let licenseInfoLink;
+      let licenseInfoLink;
 
-    switch (license) {
-      case 'Academic Free License v3.0':
-        licenseInfoLink = 'https://choosealicense.com/licenses/afl-3.0/';
-        break;
+      switch (license) {
+        case 'Academic Free License v3.0':
+            licenseInfoLink = 'https://choosealicense.com/licenses/afl-3.0/';
+            break;
 
-      case 'Apache License 2.0':
-        licenseInfoLink = 'https://choosealicense.com/licenses/apache-2.0/';
-        break;
+        case 'Apache License 2.0':
+          licenseInfoLink = 'https://choosealicense.com/licenses/apache-2.0/';
+          break;
 
-      case 'Creative Commons Zero v1.0 Universal':
-        licenseInfoLink = 'https://choosealicense.com/licenses/cc0-1.0/';
-        break;
+        case 'Creative Commons Zero v1.0 Universal':
+            licenseInfoLink = 'https://choosealicense.com/licenses/cc0-1.0/';
+          break;
   
-      case 'Eclipse Public License 2.0':
-        licenseInfoLink = 'https://choosealicense.com/licenses/epl-2.0/';
-        break;
+        case 'Eclipse Public License 2.0':
+            licenseInfoLink = 'https://choosealicense.com/licenses/epl-2.0/';
+            break;
 
-      case 'GNU General Public License v3.0':
-        licenseInfoLink = 'https://choosealicense.com/licenses/gpl-3.0/';
-        break;
+        case 'GNU General Public License v3.0':
+            licenseInfoLink = 'https://choosealicense.com/licenses/gpl-3.0/';
+            break;
     
-      case 'MIT License':
-        licenseInfoLink = 'https://choosealicense.com/licenses/mit/';
-        break;
+        case 'MIT License':
+            licenseInfoLink = 'https://choosealicense.com/licenses/mit/';
+            break;
 
-      case 'Mozilla Public License 2.0':
-        licenseInfoLink = 'https://choosealicense.com/licenses/mpl-2.0/';
-        break;
+        case 'Mozilla Public License 2.0':
+            licenseInfoLink = 'https://choosealicense.com/licenses/mpl-2.0/';
+            break;
       
-      case 'The Unilicense':
-        licenseInfoLink = 'https://choosealicense.com/licenses/unlicense/';
-        break;
-    }
+        case 'The Unilicense':
+            licenseInfoLink = 'https://choosealicense.com/licenses/unlicense/';
+          break;
+      }
 
-    return licenseInfoLink;
+      return licenseInfoLink;
   }
 };
 
@@ -118,18 +118,18 @@ function generateMarkdown(data) {
   return `# ${data.projectTitle}
 
   ${renderLicenseBadge(data.license)}
-  <br><br>
+  <br><br>  
 
   ### TABLE OF CONTENTS
-  * [User Story](#user)
+  * [User Story](#user-story)
 
-  * [Project Description](#project)
+  * [Project Description](#project-description)
   
-  * [Installation Instructions](#installation)
+  * [Installation Instructions](#installation-instructions)
   
-  * [Usage Instructions](#usage)
+  * [Usage Instructions](#usage-instructions)
   
-  * [Special Features](#specialFeatures)
+  * [Special Features](#special-features)
   
   * [Credits](#credits)
   
@@ -141,16 +141,17 @@ function generateMarkdown(data) {
   
   * [Copyright](#copyright)
 
-  * [Data Validation / Testing Methods](#data)
+  * [Data Validation and Testing Methods](#data-validation-and-testing-methods)
 
-  * [Further Developments](#further)
+  * [Further Developments](#further-developments)
   
-  * [How to Contribute](#contributions)
+  * [How to Contribute to this Project](#how-to-contribute-to-this-project)
   
-  * [Provide Feedback](#feedback)
+  * [Provide Feedback](#provide-feedback)
   <br><br><br>
  
-  **********************************************************************
+  ***
+  
   <br><br><br>
 
   ### USER STORY
@@ -192,7 +193,7 @@ function generateMarkdown(data) {
   ### LICENSE
   ${renderLicenseSection(data.license)}
   
-  Information<br>
+  License Information<br>
   ${renderLicenseInfoLink(data.license)}
   <br><br>
 
@@ -209,7 +210,7 @@ function generateMarkdown(data) {
   <br><br>
 
 
-  ### DATA VALIDATION / TESTING METHODS
+  ### DATA VALIDATION AND TESTING METHODS
   ${data.testMethods}
   <br><br>
 
@@ -224,9 +225,9 @@ function generateMarkdown(data) {
   <br><br>
 
 
-  ### <a name='feedback'></a>PROVIDE FEEDBACK
-  Questions and comments are always welcome!
-  * Email: ${data.emailAddress}
+  ### PROVIDE FEEDBACK
+  ${data.feedback}
+  * Email: [${data.emailAddress}](${data.emailAddress})
 
   * GitHub: ${data.gitHubName}
   
