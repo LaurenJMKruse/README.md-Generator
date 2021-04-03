@@ -1,5 +1,6 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
+// Functions
+//****************************************************
+// 01. Obtain license badge, if license selected
 function renderLicenseBadge(license) {
   if (license === 'None') {
     return '';
@@ -9,8 +10,7 @@ function renderLicenseBadge(license) {
   }
 };
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
+// 02. Create license link, if license selected
 function renderLicenseLink(license) {
   if (license === 'None') {
     return '';
@@ -20,8 +20,7 @@ function renderLicenseLink(license) {
   }
 };
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
+// 03. Create shortcut to License section
 function renderLicenseSection(license) {
   if (license === 'None') {
     return '';
@@ -33,6 +32,7 @@ function renderLicenseSection(license) {
   }
 };
 
+// 04. 
 function renderCopyright(copyright, authorName) {
   if (copyright === 'No') {
     return 'Not Applicable';
@@ -42,59 +42,106 @@ function renderCopyright(copyright, authorName) {
   }
 };
 
-// TODO: Create a function to generate markdown for README
+// ##. Generate README markdown file
 function generateMarkdown(data) {
   return `# ${data.projectTitle}
+
+  ${renderLicenseBadge(data.license)}
+
+  ### TABLE OF CONTENTS
+  * [User Story](#userStory)
+
+  * [Project Description](#projectDescription)
+  
+  * [Installation Instructions](#installation)
+  
+  * [Usage Instructions](#usageInstructions)
+  
+  * [Special Features](#specialFeatures)
+  
+  * [Credits](#credits)
+  
+  * [References](#references)
+  
+  * [License](#license)  
+  
+  * [Author](#author)
+  
+  * [Copyright](#copyright)
+
+  * [Data Validation / Testing Methods](#testMethods)
+
+  * [Further Developments](#furtherDevelopments)
+  
+  * [How to Contribute](#contributions)
+  
+  * [Provide Feedback](#ADDLINK)
+  
+  
+
 
   ### USER STORY
   ${data.userStory}
 
+
   ### PROJECT DESCRIPTION
   ${data.projectDescription}
+
 
   ### INSTALLATION INSTRUCTIONS
   ${data.installation}
 
+
   ### USAGE INSTRUCTIONS
   ${data.usageInstructions}
+
 
   ### SPECIAL FEATURES
   ${data.specialFeatures}
 
+
   ### CREDITS
   ${data.credits}
+
 
   ### REFERENCES
   In creating this application, I relied upon the guidance of the following people/entities:
   ${data.references}
 
-  ### LICENSE
-  ${renderLicenseLink(data.license)}
+  
+  ### LICENSE  ********* FIX
   ${renderLicenseSection(data.license)}
-  ${renderLicenseBadge(data.license)}
+  ${renderLicenseLink(data.license)}
+  
   
   ### AUTHOR
   ${data.name}  
   
   [Please visit me on GitHub!](https://github.com/${data.gitHubName})
 
+
   ### COPYRIGHT
   ${renderCopyright(data.copyright, data.name)}
+
 
   ### DATA VALIDATION / TESTING METHODS
   ${data.testMethods}
 
+
   ### FURTHER DEVELOPMENTS
   ${data.furtherDevelopments}
+
 
   ### HOW TO CONTRIBUTE TO THIS PROJECT
   ${data.contributions}
 
+
   ### PROVIDE FEEDBACK
-  Questions and comments are welcome!
+  Questions and comments are always welcome!
   Email: ${data.emailAddress}
   GitHub: ${data.gitHubName}
   Slack: ${data.slackName}
+  
   Preferred communication method: ${data.contactMethod}
 `;
 }
