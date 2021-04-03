@@ -5,34 +5,105 @@ function renderLicenseBadge(license) {
   if (license === 'None') {
     return '';
   } else {
-    let licenseBadge = `![GitHub license](https://img.shields.io/badge/license-${license}-blue.svg)`;
-    return licenseBadge;
-  }
+  
+    let licenseBadgeLink;    
+
+    switch (license) {
+      case 'Academic Free License v3.0':
+          licenseBadgeLink = 'Academic%20Free%20License%20v3.0';
+          break;
+
+      case 'Apache License 2.0':
+          licenseBadgeLink = 'Apache%20License%202.0';
+          break;
+
+      case 'Creative Commons Zero v1.0 Universal':
+          licenseBadgeLink = 'Creative%20Commons%20Zero%20v1.0%20Universal';
+          break;
+  
+      case 'Eclipse Public License 2.0':
+          licenseBadgeLink = 'Eclipse%20Public%20License%202.0';
+          break;
+
+      case 'GNU General Public License v3.0':
+          licenseBadgeLink = 'GNU%20General%20Public%20License%20v3.0';
+          break;
+    
+      case 'MIT License':
+          licenseBadgeLink = 'MIT%20License';
+          break;
+
+      case 'Mozilla Public License 2.0':
+          licenseBadgeLink = 'Mozilla%20Public%20License%202.0';
+          break;
+      
+      case 'The Unilicense':
+          licenseBadgeLink = 'The%20Unilicense';
+          break;
+      }
+
+      let licenseBadge = '[![License Badge](https://badgen.net/badge/icon/' + licenseBadgeLink + '?icon=github&label)](https://badgen.net/)';
+
+      return licenseBadge;
+    }
 };
 
-// 02. Create license link, if license selected
-function renderLicenseLink(license) {
-  if (license === 'None') {
-    return '';
-  } else {
-    let licenseLink = `[License Information](#license)`;
-    return licenseLink;
-  }
-};
-
-// 03. Create shortcut to License section
+// 02. Create content for License section
 function renderLicenseSection(license) {
   if (license === 'None') {
-    return '';
+    return 'This application does not have a license.';
   } else {
-    let licenseSection = `### LICENSE
-    
-    This application licensed under ${license}.`;
+    let licenseSection = `This application licensed under ${license}.`;
     return licenseSection;
   }
 };
 
-// 04. 
+// 03. Create link to license information, if license selected
+function renderLicenseInfoLink(license) {
+  if (license === 'None') {
+    return 'Not Applicable';
+  } else {
+    let licenseInfoLink;
+
+    switch (license) {
+      case 'Academic Free License v3.0':
+        licenseInfoLink = 'https://choosealicense.com/licenses/afl-3.0/';
+        break;
+
+      case 'Apache License 2.0':
+        licenseInfoLink = 'https://choosealicense.com/licenses/apache-2.0/';
+        break;
+
+      case 'Creative Commons Zero v1.0 Universal':
+        licenseInfoLink = 'https://choosealicense.com/licenses/cc0-1.0/';
+        break;
+  
+      case 'Eclipse Public License 2.0':
+        licenseInfoLink = 'https://choosealicense.com/licenses/epl-2.0/';
+        break;
+
+      case 'GNU General Public License v3.0':
+        licenseInfoLink = 'https://choosealicense.com/licenses/gpl-3.0/';
+        break;
+    
+      case 'MIT License':
+        licenseInfoLink = 'https://choosealicense.com/licenses/mit/';
+        break;
+
+      case 'Mozilla Public License 2.0':
+        licenseInfoLink = 'https://choosealicense.com/licenses/mpl-2.0/';
+        break;
+      
+      case 'The Unilicense':
+        licenseInfoLink = 'https://choosealicense.com/licenses/unlicense/';
+        break;
+    }
+
+    return licenseInfoLink;
+  }
+};
+
+// 04. Create content for Copyright section
 function renderCopyright(copyright, authorName) {
   if (copyright === 'No') {
     return 'Not Applicable';
@@ -47,15 +118,16 @@ function generateMarkdown(data) {
   return `# ${data.projectTitle}
 
   ${renderLicenseBadge(data.license)}
+  <br><br>
 
   ### TABLE OF CONTENTS
-  * [User Story](#userStory)
+  * [User Story](#user)
 
-  * [Project Description](#projectDescription)
+  * [Project Description](#project)
   
   * [Installation Instructions](#installation)
   
-  * [Usage Instructions](#usageInstructions)
+  * [Usage Instructions](#usage)
   
   * [Special Features](#specialFeatures)
   
@@ -69,78 +141,96 @@ function generateMarkdown(data) {
   
   * [Copyright](#copyright)
 
-  * [Data Validation / Testing Methods](#testMethods)
+  * [Data Validation / Testing Methods](#data)
 
-  * [Further Developments](#furtherDevelopments)
+  * [Further Developments](#further)
   
   * [How to Contribute](#contributions)
   
-  * [Provide Feedback](#ADDLINK)
-  
-  
-
+  * [Provide Feedback](#feedback)
+  <br><br><br>
+ 
+  **********************************************************************
+  <br><br><br>
 
   ### USER STORY
   ${data.userStory}
+  <br><br>
 
 
   ### PROJECT DESCRIPTION
   ${data.projectDescription}
+  <br><br>
 
 
   ### INSTALLATION INSTRUCTIONS
   ${data.installation}
+  <br><br>
 
 
   ### USAGE INSTRUCTIONS
   ${data.usageInstructions}
+  <br><br>
 
 
   ### SPECIAL FEATURES
   ${data.specialFeatures}
+  <br><br>
 
 
   ### CREDITS
   ${data.credits}
+  <br><br>
 
 
   ### REFERENCES
-  In creating this application, I relied upon the guidance of the following people/entities:
+  In creating this application, I relied upon the guidance of the following people/entities:<br>
   ${data.references}
+  <br><br>
 
   
-  ### LICENSE  ********* FIX
+  ### LICENSE
   ${renderLicenseSection(data.license)}
-  ${renderLicenseLink(data.license)}
   
+  Information<br>
+  ${renderLicenseInfoLink(data.license)}
+  <br><br>
+
   
   ### AUTHOR
-  ${data.name}  
-  
+  ${data.name}<br>
+
   [Please visit me on GitHub!](https://github.com/${data.gitHubName})
+  <br><br>
 
 
   ### COPYRIGHT
   ${renderCopyright(data.copyright, data.name)}
+  <br><br>
 
 
   ### DATA VALIDATION / TESTING METHODS
   ${data.testMethods}
+  <br><br>
 
 
   ### FURTHER DEVELOPMENTS
   ${data.furtherDevelopments}
+  <br><br>
 
 
   ### HOW TO CONTRIBUTE TO THIS PROJECT
   ${data.contributions}
+  <br><br>
 
 
-  ### PROVIDE FEEDBACK
+  ### <a name='feedback'></a>PROVIDE FEEDBACK
   Questions and comments are always welcome!
-  Email: ${data.emailAddress}
-  GitHub: ${data.gitHubName}
-  Slack: ${data.slackName}
+  * Email: ${data.emailAddress}
+
+  * GitHub: ${data.gitHubName}
+  
+  * Slack: ${data.slackName}
   
   Preferred communication method: ${data.contactMethod}
 `;
